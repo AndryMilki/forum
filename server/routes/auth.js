@@ -9,10 +9,10 @@ const router = express.Router();
 router.post('/register', async(req, res) => {
     const { username, password, confirmPassword, email } = req.body;
     if (!username || !password || !confirmPassword || !email) {
-        return res.status(400).json({ message: 'All fields are required' });
+        return res.status(400).json({ message: 'Всі поля є обов\'язковими' });
     }
     if (password !== confirmPassword) {
-        return res.status(400).json({ message: 'Passwords do not match' });
+        return res.status(400).json({ message: 'Паролі не співпадають' });
     }
     try {
         const existingUser = await User.findOne({username});
